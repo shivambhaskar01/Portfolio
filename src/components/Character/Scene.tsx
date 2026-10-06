@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
@@ -19,8 +19,10 @@ const Scene = () => {
   const sceneRef = useRef(new THREE.Scene());
   const { setLoading } = useLoading();
 
-  const [character, setChar] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
+    let isActive = true;
+    let resizeListener: (() => void) | null = null;
+
     if (canvasDiv.current) {
       let rect = canvasDiv.current.getBoundingClientRect();
       let container = { width: rect.width, height: rect.height };
@@ -54,12 +56,12 @@ const Scene = () => {
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
       loadCharacter().then((gltf) => {
+        if (!isActive) return;
         if (gltf) {
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
           mixer = animations.mixer;
           let character = gltf.scene;
-          setChar(character);
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
@@ -69,9 +71,13 @@ const Scene = () => {
               animations.startIntro();
             }, 2500);
           });
-          window.addEventListener("resize", () =>
-            handleResize(renderer, camera, canvasDiv, character)
-          );
+          let wasDesktop = window.innerWidth > 1024;
+          resizeListener = () => {
+            const isDesktop = window.innerWidth > 1024;
+            handleResize(renderer, camera, canvasDiv, character, isDesktop !== wasDesktop);
+            wasDesktop = isDesktop;
+          };
+          window.addEventListener("resize", resizeListener);
         }
       });
 
@@ -127,12 +133,11 @@ const Scene = () => {
       };
       animate();
       return () => {
+        isActive = false;
         clearTimeout(debounce);
         scene.clear();
         renderer.dispose();
-        window.removeEventListener("resize", () =>
-          handleResize(renderer, camera, canvasDiv, character!)
-        );
+        if (resizeListener) window.removeEventListener("resize", resizeListener);
         if (canvasDiv.current) {
           canvasDiv.current.removeChild(renderer.domElement);
         }
