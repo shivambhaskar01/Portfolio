@@ -34,6 +34,9 @@ h6 {
 body {
   overflow: hidden;
 }
+#smooth-wrapper {
+  z-index: 12;
+}
 a {
   color: inherit;
   text-decoration: inherit;
@@ -97,7 +100,7 @@ body {
   height: var(--vh);
   margin: auto;
   margin-top: 50px;
-  margin-bottom: -100px;
+  margin-bottom: 0;
 }
 
 .techstack h2 {

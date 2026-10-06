@@ -182,7 +182,7 @@ const TechStack = () => {
 
   return (
     <div id="techstack" className="techstack">
-      <h2> My Techstack</h2>
+      <h2>My Techstack</h2>
 
       <Canvas
         shadows

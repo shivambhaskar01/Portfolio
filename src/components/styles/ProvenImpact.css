@@ -1,0 +1,388 @@
+.proven-impact-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.65fr);
+  align-items: start;
+  gap: clamp(36px, 6vw, 108px);
+  width: var(--cWidth);
+  max-width: 1600px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 14vh 0 12vh;
+  box-sizing: border-box;
+  z-index: 12;
+}
+
+.impact-intro {
+  position: relative;
+  z-index: 1;
+  padding-top: 6px;
+}
+
+.impact-eyebrow {
+  margin: 0 0 18px;
+  color: #b5dfd7;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.impact-intro h2 {
+  margin: 0;
+  font-size: clamp(36px, 4.2vw, 66px);
+  line-height: 1.03;
+  font-weight: 500;
+}
+
+.impact-intro h2 span {
+  display: block;
+  color: var(--accentColor);
+}
+
+.impact-summary {
+  max-width: 390px;
+  margin: 24px 0 32px;
+  color: rgba(234, 229, 236, 0.72);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.impact-metrics {
+  display: grid;
+  gap: 18px;
+  max-width: 300px;
+}
+
+.impact-metrics div {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(194, 164, 255, 0.2);
+}
+
+.impact-metrics strong {
+  color: var(--accentColor);
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.impact-metrics span {
+  color: rgba(234, 229, 236, 0.68);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.impact-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  perspective: 1200px;
+}
+
+.impact-card {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1.55;
+  min-height: 172px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  perspective: 1000px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+.is-visible .impact-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-visible .impact-card:nth-child(2n) {
+  transition-delay: 90ms;
+}
+
+.is-visible .impact-card:nth-child(4n + 1) {
+  transition-delay: 160ms;
+}
+
+.impact-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  transition: transform 650ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  transform-style: preserve-3d;
+}
+
+.impact-card:hover .impact-card-inner,
+.impact-card:focus-visible .impact-card-inner,
+.impact-card.is-flipped .impact-card-inner {
+  transform: rotateY(180deg);
+}
+
+.impact-card:focus-visible {
+  outline: 2px solid #b5dfd7;
+  outline-offset: 4px;
+}
+
+.impact-card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: clamp(17px, 2vw, 26px);
+  border: 1px solid rgba(194, 164, 255, 0.27);
+  border-radius: 5px;
+  background: rgba(24, 19, 28, 0.96);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+.impact-card-front {
+  background-image: linear-gradient(135deg, rgba(194, 164, 255, 0.09), transparent 65%);
+}
+
+.impact-card-back {
+  justify-content: flex-start;
+  gap: 10px;
+  overflow: auto;
+  border-color: rgba(181, 223, 215, 0.4);
+  background: #151c1d;
+  transform: rotateY(180deg);
+}
+
+.impact-card-number {
+  color: #b5dfd7;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.impact-card-title {
+  max-width: 300px;
+  font-size: clamp(16px, 1.3vw, 21px);
+  line-height: 1.35;
+  font-weight: 450;
+}
+
+.impact-card-hint {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(234, 229, 236, 0.58);
+  font-size: 11px;
+}
+
+.impact-card-hint span {
+  color: #b5dfd7;
+  font-size: 18px;
+}
+
+.impact-card-proof {
+  color: #b5dfd7;
+  font-size: clamp(13px, 1.1vw, 16px);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.impact-card-description {
+  color: rgba(234, 229, 236, 0.72);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.impact-card-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: auto;
+}
+
+.impact-card-tools span {
+  padding: 4px 7px;
+  border: 1px solid rgba(181, 223, 215, 0.22);
+  border-radius: 3px;
+  color: rgba(234, 229, 236, 0.82);
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+@media (max-width: 1024px) {
+  .proven-impact-section {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    min-height: 0;
+    padding: 80px 0;
+  }
+
+  .impact-intro {
+    max-width: 640px;
+  }
+
+  .impact-intro h2 {
+    font-size: 52px;
+  }
+
+  .impact-summary {
+    max-width: 540px;
+  }
+
+  .impact-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+    gap: 12px;
+  }
+
+  .impact-metrics div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .impact-card {
+    aspect-ratio: 1.7;
+  }
+}
+
+@media (max-width: 600px) {
+  .proven-impact-section {
+    gap: 26px;
+    padding: 64px 0;
+  }
+
+  .impact-intro h2 {
+    font-size: 42px;
+  }
+
+  .impact-summary {
+    margin: 18px 0 24px;
+    font-size: 14px;
+  }
+
+  .impact-metrics {
+    gap: 8px;
+  }
+
+  .impact-metrics strong {
+    font-size: 19px;
+  }
+
+  .impact-metrics span {
+    font-size: 10px;
+  }
+
+  .impact-card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .impact-card {
+    aspect-ratio: 1.75;
+    min-height: 175px;
+  }
+
+  .impact-card-title {
+    font-size: 19px;
+  }
+
+  .impact-card-description {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .impact-card,
+  .impact-card-inner {
+    transition-duration: 1ms;
+  }
+
+  .impact-card {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .proven-impact-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    width: min(42vw, 700px);
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: max(3%, calc((100vw - 1600px) / 2));
+    padding: 9vh 0;
+  }
+
+  .impact-intro h2 {
+    font-size: 46px;
+  }
+
+  .impact-summary {
+    max-width: 100%;
+    margin: 12px 0 18px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .impact-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    max-width: none;
+  }
+
+  .impact-metrics div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding-bottom: 8px;
+  }
+
+  .impact-card-grid {
+    gap: 12px;
+  }
+
+  .impact-card {
+    aspect-ratio: 2.35;
+    min-height: 112px;
+  }
+
+  .impact-card-face {
+    padding: 15px;
+  }
+
+  .impact-card-title {
+    font-size: 16px;
+  }
+
+  .impact-card-back {
+    gap: 7px;
+  }
+
+  .impact-card-proof {
+    font-size: 13px;
+  }
+
+  .impact-card-description {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .proven-impact-section {
+    width: min(35vw, 700px);
+  }
+}

@@ -214,3 +214,54 @@
     justify-content: left;
   }
 }
+.career-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.career-achievements span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #c9d1d9;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.career-achievements span:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #58a6ff;
+  color: #ffffff;
+  transform: translateX(4px);
+}
+.career-achievements a {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+
+  color: #c9d1d9;
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.career-achievements a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #58a6ff;
+  color: #ffffff;
+  transform: translateX(4px);
+}

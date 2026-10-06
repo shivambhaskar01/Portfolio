@@ -6,8 +6,10 @@ import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
-import WhatIDo from "./WhatIDo";
-import Plans from "./Plans";
+import SkillsDirectory from "./SkillsDirectory";
+// import Plans from "./Plans";
+import ProvenImpact from "./ProvenImpact";
+import PersonalProjects from "./PersonalProjects";
 // import Work from "./Work";
 import setSplitText from "./utils/splitText";
 
@@ -40,16 +42,19 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <div id="smooth-content">
           <div className="container-main">
             <Landing>{!isDesktopView && children}</Landing>
+            <ProvenImpact />
             <About />
-            <WhatIDo />
+            {/* <WhatIDo /> */}
             <Career />
-            <Plans />
+            {/* <Plans /> */}
+            <PersonalProjects />
             {/* <Work /> */}
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>
                 <TechStack />
               </Suspense>
             )}
+            <SkillsDirectory />
             <Contact />
           </div>
         </div>

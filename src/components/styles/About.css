@@ -1,71 +1,51 @@
-.about-section {
+.about-profile-section {
   display: flex;
   align-items: center;
-  justify-content: left;
-  place-items: center;
+  justify-content: flex-end;
   position: relative;
-  opacity: 1;
-  height: auto;
   width: var(--cWidth);
+  min-height: 70vh;
   margin: auto;
+  padding: 70px 0;
+  box-sizing: border-box;
+  z-index: 12;
 }
 .about-me {
-  padding: 50px 0px;
-  padding-bottom: 0;
-  width: 500px;
-  max-width: calc(100% - 15px);
+  width: min(42vw, 620px);
 }
 .about-me h3 {
   font-size: 25px;
   text-transform: uppercase;
-  letter-spacing: 7px;
+  letter-spacing: 0;
   font-weight: 400;
   color: var(--accentColor);
 }
 
 .about-me p {
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 300;
-  line-height: 36px;
-  letter-spacing: 1px;
-}
-
-@media only screen and (min-width: 600px) {
-  .about-section {
-    justify-content: center;
-  }
+  line-height: 1.9;
+  letter-spacing: 0;
 }
 @media only screen and (min-width: 768px) {
   .about-me {
-    width: 500px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
-  }
-  .about-section {
-    opacity: 1;
+    max-width: 100%;
   }
 }
 @media only screen and (min-width: 1025px) {
-  .about-section {
-    width: var(--cWidth);
-    justify-content: right;
-    max-width: 1920px;
-    height: var(--vh);
-    padding: 0px;
-    opacity: 1;
-  }
-  .about-me {
-    padding: 0px;
-    width: 50%;
-  }
   .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
+    font-size: 18px;
   }
 }
-@media only screen and (min-width: 1950px) {
+@media only screen and (max-width: 700px) {
+  .about-profile-section {
+    min-height: 0;
+    padding: 56px 0;
+  }
+  .about-me {
+    width: 100%;
+  }
   .about-me p {
-    font-size: 2.5rem;
-    line-height: 2.7rem;
+    font-size: 14px;
   }
 }
